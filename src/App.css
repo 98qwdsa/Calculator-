@@ -52,6 +52,14 @@
   padding:0 2px;
   margin: 2px 0;
 }
+.warp .resultError{
+  width: 100%;
+  height: 18px;
+  line-height: 18px;
+  background: red;
+  padding:0 2px;
+  margin: 2px 0;
+}
 .action_warp {
   display: flex;
   flex-wrap: wrap;
