@@ -1,6 +1,6 @@
 
 import React from "react";
-import "./App.css";
+import "./App.scss";
 function Numbers(props) {
   return (
     <div className="number_warp">
