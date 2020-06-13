@@ -1,0 +1,18 @@
+.result{
+    border: 1px black solid;
+    height: 20px;
+    width: 160px;
+    margin: 5px auto;
+    background-color: rgb(206, 203, 203);
+}
+
+.calculator{
+    width: 160px;
+    margin: 0 auto;
+}
+
+button{
+    width: 40px;
+    height: 25px;
+    margin: 5px 5px;
+}
