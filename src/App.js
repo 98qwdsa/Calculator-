@@ -1,83 +1,65 @@
 import React from "react";
-import ReactDOM from 'react-dom';
 import "./App.css";
-class ReactElement extends React.Component {
-  render() {
-    return (
-      <div>
-        ReactElement
-      </div>)
-  }
-}
 
-class FragmentElement extends React.Component {
-  render() {
-    return (
-      <>
-        <span>FragmentElement</span>
-        <span>FragmentElement</span>
-        <span>FragmentElement</span>
-      </>)
-  }
-}
-
-
-class ArrayStringNumberElement extends React.Component {
-  render() {
-    return [<span>ArrayStringNumberElement</span>, 'string', 123123123]
-  }
-}
-
-class PortalElement extends React.Component {
-  render() {
-    return ReactDOM.createPortal(<div>PortalElement:<ReactElement /></div>, document.querySelector('html'))
-  }
-}
-
-class BooleanElement extends React.Component {
-  render() {
-    return false
-  }
-}
-
-class NullElement extends React.Component {
-  render() {
-    return null
-  }
-}
-class ChildrenComponent extends React.Component {
+class Timer extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      str: props.str
+      time: 0
     }
   }
-  render() {
-    return (
-      <div>
-        ChildrenComponent<br />
-        {this.state.str}
-      </div>)
+  timer = null
+  gap = 1000
+  time = 0
+  componentDidMount() {
+    this.timer = null;
+    this.timer = setInterval(() => {
+      this.time += this.gap
+      this.setState({
+        time: this.time
+      })
+      console.log(this.time)
+    }, this.gap)
   }
-}
-class App extends React.Component {
+  componentWillUnmount() {
+    clearInterval(this.timer);
+  }
   render() {
     return (
       <>
-        <ReactElement />
-        <hr />
-        <FragmentElement />
-        <hr />
-        <ArrayStringNumberElement />
-        <hr />
-        <PortalElement />
-        <hr />
-        <BooleanElement />
-        <hr />
-        <NullElement />
+        timer:{this.state.time}
       </>
     );
   }
 }
 
+class App extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      show: true
+    }
+  }
+  handelOnClick = () => {
+    this.setState({
+      show: !this.state.show
+    })
+  }
+  render() {
+    return (<>
+      <button onClick={this.handelOnClick}>on/off</button>
+      {this.state.show && <Timer />}
+    </>
+    )
+  }
+}
+
 export default App;
+
+
+/**
+ * 
+ * 如何开关后继续计数
+ * 
+ * 
+*/
