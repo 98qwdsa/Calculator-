@@ -1,12 +1,16 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from 'react';//这是react
+import ReactDOM from 'react-dom';//渲染用
+import './cal.css';
+import Cal from './cal2'
 
-ReactDOM.render(<App />, document.getElementById('root'));
+//import * as serviceWorker from './serviceWorker';/*Service workers 本质上充当Web应用程序与浏览器之间的代理服务器
+//react不需要操作dom，直接操作数据
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+
+ReactDOM.render(//reactDOM做展示
+    <Cal />,
+    
+  document.getElementById('root')
+);
+
+
