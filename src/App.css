@@ -4,6 +4,7 @@
     width: 18.25rem;
     display: flex;
     flex-direction: column;
+    text-align: center;
 }
 .operator-content {
     width: 18.75rem;

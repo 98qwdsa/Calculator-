@@ -107,9 +107,11 @@ class App extends Component {
       })
       return
       //只能存在一个小数点
-    } else if (result.indexOf(".") !== -1 && val === ".") {
-      return
-    } else if (result.length === 9) {
+    } else
+    //  if (result.indexOf(".") !== -1 && val === ".") {
+    //   return
+    // } else 
+    if (result.length === 9) {
       message.error('超过本计算器的计算能力');
       return
     } else {
@@ -118,7 +120,6 @@ class App extends Component {
       })
     }
   }
-
 }
 
 export default App;

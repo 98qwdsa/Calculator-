@@ -2,6 +2,7 @@
   "name": "calculator",
   "version": "0.1.0",
   "private": true,
+  "homepage": ".",
   "dependencies": {
     "@babel/core": "7.9.0",
     "@svgr/webpack": "4.3.3",
@@ -139,4 +140,5 @@
       "jest-watch-typeahead/testname"
     ]
   }
+
 }
