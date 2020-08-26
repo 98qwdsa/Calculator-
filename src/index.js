@@ -1,16 +1,13 @@
-import React from 'react';//这是react
-import ReactDOM from 'react-dom';//渲染用
-import './cal.css';
-import Cal from './cal2'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import Timer from './App'
+import CountTime from './CountTime'
+import * as serviceWorker from './serviceWorker';
 
-//import * as serviceWorker from './serviceWorker';/*Service workers 本质上充当Web应用程序与浏览器之间的代理服务器
-//react不需要操作dom，直接操作数据
+ReactDOM.render(<CountTime />, document.getElementById('root'));
 
-
-ReactDOM.render(//reactDOM做展示
-    <Cal />,
-    
-  document.getElementById('root')
-);
-
-
+// If you want your app to work offline and load faster, you can change
+// unregister() to register() below. Note this comes with some pitfalls.
+// Learn more about service workers: https://bit.ly/CRA-PWA
+serviceWorker.unregister();
