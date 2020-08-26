@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Input, Typography } from 'antd'
+import { Button, Input, Typography, message } from 'antd'
 import './App.css'
 
 const { Text } = Typography;
@@ -36,7 +36,8 @@ class Timer extends Component {
             time: 0,
             gap: 1000,
             stop: false,
-            status: '暂停'
+            status: '暂停',
+            inputValue: ''
         }
     }
 
@@ -76,9 +77,14 @@ class Timer extends Component {
     }
     //改变时间间隔
     handleClickChangeGap() {
+        if (this.state.inputValue === '') {
+            message.error("时间间隔不能为空")
+            return
+        }
         this.setState({
             gap: this.state.inputValue
         })
+        message.success(`时间间隔为：${this.state.inputValue / 1000}秒`)
         clearInterval(this.timer)
         setTimeout(() => {
             this.fun_timer()
@@ -123,7 +129,6 @@ class Timer extends Component {
         console.log('shouldComponentUpdate')
         // return !this.state.stop
         return true
-
     }
     /**
      * 组件被更新之前，它会自动执行，但是他在shouldComponentUpdate之后才会执行
