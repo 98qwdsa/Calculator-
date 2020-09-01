@@ -8,7 +8,7 @@ const Print = (props) => {
     return (
         <div className="print-content">
             <Input value={props.result} disabled={true} />
-            <Text mark>{props.error}</Text>
+            {/* <Text mark>{props.error}</Text> */}
         </div>
     )
 }

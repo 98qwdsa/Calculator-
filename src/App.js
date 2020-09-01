@@ -27,7 +27,9 @@ class App extends Component {
 
 
     return (
-      <div className="content">
+      <div>
+        <div>
+        </div>
         <Print
           result={this.state.result}
           error={this.state.error}
@@ -58,12 +60,19 @@ class App extends Component {
     //归零
     if (val === "c") {
       this.setState({
-        result: "0",
+        result: 0,
         error: '请输入数字或符号进行计算'
       })
+      if (this.props.score) {
+        this.props.score(0);
+        return
+      }
       return
       //计算
     } else if (val === "=") {
+      if (this.props.score) {
+        this.props.score(parseInt(result));
+      }
       try {
         this.setState({
           result: eval(result),
@@ -101,24 +110,24 @@ class App extends Component {
   }
   handleNumber(val) {
     var result = this.state.result
-    if (result === '0') {
+    if (result === '0' || result === 0) {
       this.setState({
         result: val
       })
       return
       //只能存在一个小数点
     } else
-    //  if (result.indexOf(".") !== -1 && val === ".") {
-    //   return
-    // } else 
-    if (result.length === 9) {
-      message.error('超过本计算器的计算能力');
-      return
-    } else {
-      this.setState({
-        result: result + val
-      })
-    }
+      //  if (result.indexOf(".") !== -1 && val === ".") {
+      //   return
+      // } else 
+      if (result.length === 9) {
+        message.error('超过本计算器的计算能力');
+        return
+      } else {
+        this.setState({
+          result: result + val
+        })
+      }
   }
 }
 

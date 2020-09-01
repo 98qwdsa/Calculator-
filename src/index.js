@@ -2,12 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 // import App from './App';
-import Timer from './Timer'
+// import Timer from './Timer'
+import Index from './component/hoc/index'
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Timer />
-  </React.StrictMode>,
+  <Index />,
   document.getElementById('root')
 );
 
