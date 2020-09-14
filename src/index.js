@@ -4,15 +4,15 @@ import './index.css';
 import Calculator from './Calculator';
 // import * as serviceWorker from './serviceWorker';
 
-import { createStore } from 'redux'
-import counter from './reducers'
+import { createStore, combineReducers } from 'redux'
+import calculator, { userInfo } from './reducers'
 
-const store = createStore(counter)
+const store = createStore(combineReducers({calculator, userInfo}))
 const rootEl = document.getElementById('root')
 
 const render = () => ReactDOM.render(
     <Calculator
-        value={store.getState()}
+        value={store.getState().calculator}
         changeEvalStr={(str) => store.dispatch({ type: 'CHANGE_EVAL_STR', str })}
         changeResult={(res) => store.dispatch({ type: 'CHANGE_RESULT_STR', res })}
         changeAll={(str, res) => store.dispatch({ type: 'CHANGE_EVAL_RESULT_STR', str, res })}
