@@ -92,10 +92,9 @@ class Calculator extends React.Component {
   constructor(props) {
     super(props);
     this.errorMsg = props.errorMsg || "请输入正确的算术式!";
-    this.state = {
-      evalStr: "",
-      result: ""
-    };
+    this.changeEvalStr = props.changeEvalStr;
+    this.changeResult = props.changeResult;
+    this.changeAll = props.changeAll;
   }
   error = "";
   //算式方法组件点击后处理方法
@@ -104,10 +103,7 @@ class Calculator extends React.Component {
     // 如果点击C按钮清除 错误信息,算式，计算结果
     if ("C" === e) {
       this.error = "";
-      this.setState({
-        evalStr: "",
-        result: ""
-      });
+      this.changeAll("", "");
       return;
     }
     if ("" === this.error) {
@@ -115,7 +111,7 @@ class Calculator extends React.Component {
       if ("=" === e) {
         let result = "";
         try {
-          result = eval(this.state.evalStr);
+          result = eval(this.props.value.evalStr);
         } catch (e) {
           result = "";
           this.error = this.errorMsg;
@@ -124,15 +120,10 @@ class Calculator extends React.Component {
           result = "";
           this.error = this.errorMsg;
         }
-        this.setState({
-          result
-        });
+        this.changeResult(result);
         return;
       }
-
-      this.setState({
-        evalStr: this.state.evalStr + e
-      });
+      this.changeEvalStr(this.props.value.evalStr + e);
       // 如果点击是一般计算方法符号，在当前算术式后面累加
     }
   };
@@ -140,9 +131,7 @@ class Calculator extends React.Component {
   numClick = e => {
     if ("" === this.error) {
       //直接在当前算式后面累加输入的数字
-      this.setState({
-        evalStr: this.state.evalStr + e
-      });
+      this.changeEvalStr(this.props.value.evalStr + e);
     }
   };
   //手动修改算式的处理方法
@@ -150,21 +139,19 @@ class Calculator extends React.Component {
     if ("" === this.error) {
       e.persist();
       //算式显示区域可以手动修改算式
-      this.setState({
-        evalStr: e.target.value
-      });
+      this.changeEvalStr(this.props.value.evalStr + e);
     }
   };
   render() {
     return (
       <div className="warp">
         <input
-          value={this.state.evalStr.toUpperCase()}
+          value={this.props.value.evalStr.toUpperCase()}
           onChange={this.inputOnChange}
         />
         {/* 显示计算结果和错误提示 */}
         <div className={this.error ? "result error" : "result"}>
-          {this.state.result === "" ? this.error : this.state.result}
+          {this.props.value.result === "" ? this.error : this.props.value.result}
         </div>
 
         {/* 引入方法按钮组件 */}
