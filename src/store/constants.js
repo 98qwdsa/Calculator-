@@ -1,0 +1,3 @@
+export const CHANGE_INPUT='CHANGE_INPUT';
+export const CLICK_FUNCS='CLICK_FUNCS';
+export const CLICK_NUMS='CLICK_NUMS'
