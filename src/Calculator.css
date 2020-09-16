@@ -52,6 +52,9 @@
   padding:0 2px;
   margin: 2px 0;
 }
+.warp .result.error{
+  border: 1px solid red;
+}
 .action_warp {
   display: flex;
   flex-wrap: wrap;
