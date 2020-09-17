@@ -1,0 +1,3 @@
+export const CHANGE_EVAL='CHANGE_EVAL';
+
+export const CHANGE_REASULT='CHANGE_REASULT'
